@@ -63,25 +63,25 @@ python experiment_shot.py --shot_method "3-shot"
 Use of other baseline models
 
 - `baseline`: 
-  - `1. cd BaseLine/baseline/`
+  - `1. cd benchmark/baseline/`
   - `2. python baseline.py --drug "Gefitinib"`
 
 - `CODEAE`:
-  - `1. cd BaseLine/CODEAE/`
+  - `1. cd benchmark/CODEAE/`
   - `2. python pretrain_hyper_main.py --drug "Gefitinib"`
   - `3. python drug_ft_hyper_main.py --drug "Gefitinib"`
 
 - `SCAD`:
-  - `1. cd BaseLine/SCAD`
+  - `1. cd benchmark/SCAD`
   - `2. python main.py --drug "Gefitinib"`
 
 - `scDeal`:
-  - `1. cd BaseLine/scDeal/`
+  - `1. cd benchmark/scDeal/`
   - `2. python bulkmodel.py --drug "Gefitinib"`
   - `3. python scmodel.py`
 
 - `scDeal_noPre`:
-  - `1. cd BaseLine/scDeal/`
+  - `1. cd benchmark/scDeal/`
   - `2. python scmodel_noPre.py --drug "Gefitinib"`
 
 Running other experiments with SSDA4Drug
@@ -98,17 +98,17 @@ python experiment.py --cell <cell_name>
 + `trainer.py`: Contains the training loop, the hyper-parameters, and the evaluation.
 + `utils.py`: Contains auxiliary, general-purpose, or custom functions, which can be called and used in other parts of the project.
 + `model.py`: Model storage directory.
-+ `BaseLine`:
++ `benchmark`:
   - `baseline`: The directory contains the code for the baseline model, the evaluation, and the training loop.
   - `CODEAE`: The directory contains the code for the `CODEAE` model, the evaluation, and the training loop.
   - `SCAD`: The directory contains the code for the `SCAD` model, the evaluation, and the training loop.
   - `scDeal`: The directory contains the code for the `scDeal` model, the evaluation, and the training loop.
-+ `experimentData`:
++ `Extended`:
   - `MCF7`: The directory stores the processed dataset of MCF7 cell lines.
   - `OSCC`: The directory stores the processed  dataset of OSCC cell lines.
   - `PC9`: The directory stores the processed  dataset of PC9 cell lines.
   - `PCa`: The directory stores the processed  dataset of PCa cell lines.
-+ `baselineData`:
++ `Datasets`:
   * `rawData`: The directory stores the raw dataset of experiment.
   * `benchmark.ipynb`: Separating expression profiles and labels from the raw benchmark dataset.
   * `split_data.ipynb`: Split the dataset.

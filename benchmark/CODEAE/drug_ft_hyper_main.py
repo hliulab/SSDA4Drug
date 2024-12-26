@@ -80,13 +80,13 @@ def main(args, drug, update_params_dict):
         else:
             method_save_folder = os.path.join('model_save', f'{args.drug}', f'{args.method}_norm')
 
-        x_source = pd.read_csv("../../data/SCAD" + '/' + args.drug + "/source_data/source_scaled" + args.gene + ".csv",
+        x_source = pd.read_csv("../../Datasets/processedData" + '/' + args.drug + "/source_data/source_scaled" + args.gene + ".csv",
                                index_col=0)
-        y_source = pd.read_csv("../../data/SCAD" + '/' + args.drug + "/source_data/source_meta_data.csv",
+        y_source = pd.read_csv("../../Datasets/processedData" + '/' + args.drug + "/source_data/source_meta_data.csv",
                                index_col=0)
-        x_target = pd.read_csv("../../data/SCAD" + '/' + args.drug + "/target_data/target_scaled" + args.gene + ".csv",
+        x_target = pd.read_csv("../../Datasets/processedData" + '/' + args.drug + "/target_data/target_scaled" + args.gene + ".csv",
                                index_col=0)
-        y_target = pd.read_csv("../../data/SCAD" + '/' + args.drug + "/target_data/target_meta_data.csv",
+        y_target = pd.read_csv("../../Datasets/processedData" + '/' + args.drug + "/target_data/target_meta_data.csv",
                                index_col=0)
         training_params.update(
             {

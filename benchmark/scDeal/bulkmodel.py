@@ -73,9 +73,9 @@ def run_main(args):
 
     #####################################################################################################################
     # Loading Source Data
-    x_source = pd.read_csv("../../data/SCAD" + '/' + args.drug + "/source_data/source_scaled" + args.gene + ".csv",
+    x_source = pd.read_csv("../../Datasets/processedData" + '/' + args.drug + "/source_data/source_scaled" + args.gene + ".csv",
                            index_col=0)
-    y_source = pd.read_csv("../../data/SCAD/" + args.drug + "/source_data/source_meta_data.csv", index_col=0)
+    y_source = pd.read_csv("../../Datasets/processedData/" + args.drug + "/source_data/source_meta_data.csv", index_col=0)
 
     x_source = x_source.T
     X_train_all, X_test, Y_train_all, Y_test = train_test_split(x_source, y_source, test_size=test_size, random_state=42)

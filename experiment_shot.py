@@ -55,9 +55,9 @@ def main(args):
         # data loading
         ####################################################################################################################
         # Loading Source Data
-        x_source = pd.read_csv("./baselineData/SCAD" + '/' + args.drug + "/source_data/source_scaled" + args.gene + ".csv",
+        x_source = pd.read_csv("./Datasets/processedData" + '/' + args.drug + "/source_data/source_scaled" + args.gene + ".csv",
                                index_col=0)
-        y_source = pd.read_csv("./baselineData/SCAD" + '/' + args.drug + "/source_data/source_meta_data.csv",
+        y_source = pd.read_csv("./Datasets/processedData" + '/' + args.drug + "/source_data/source_meta_data.csv",
                                index_col=0)
         # train
         x_source = x_source.T
@@ -87,9 +87,9 @@ def main(args):
 
         ###################################################################################################################
         # Loading Target Data
-        x_target = pd.read_csv("./baselineData/SCAD" + '/' + args.drug + "/target_data/target_scaled" + args.gene + ".csv",
+        x_target = pd.read_csv("./Datasets/processedData" + '/' + args.drug + "/target_data/target_scaled" + args.gene + ".csv",
                                index_col=0)
-        y_target = pd.read_csv("./baselineData/SCAD" + '/' + args.drug + "/target_data/target_meta_data.csv",
+        y_target = pd.read_csv("./Datasets/processedData" + '/' + args.drug + "/target_data/target_meta_data.csv",
                                index_col=0)
 
         x_target = x_target.T
@@ -240,14 +240,14 @@ def main(args):
         loss_class = nn.CrossEntropyLoss()
         print("Transfer " + args.method + " finished")
         test_model = m.Test_Double_Model(predictor=predictor_f, encoder=encoder_f, adentropy_p=Predictor_adentropy_f)
-        test_file = "./baselineData/SCAD" + '/' + args.drug + '/' + str(args.n) + '.tsv'
+        test_file = "./Datasets/processedData" + '/' + args.drug + '/' + str(args.n) + '.tsv'
         trainer.test_shot(test_model, test_dataset, loss_class, device, test_file,i)
 
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     # data
-    parser.add_argument('--path', type=str, default='data/SCAD',
+    parser.add_argument('--path', type=str, default='./Datasets/processedData',
                         help='Path of the dataset used for model training')
     parser.add_argument('--drug', type=str, default='PLX4720',
                         help='choose drug,Can be PLX4720_451Lu,Gefitinib,Erlotinib,PLX4720,Vorinostat, Cetuximab,AR-42,and Etoposide.')

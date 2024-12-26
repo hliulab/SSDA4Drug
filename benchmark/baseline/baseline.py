@@ -73,9 +73,9 @@ def main(args):
         # data loading
         ####################################################################################################################
         # Loading Source Data
-        x_source = pd.read_csv("../../data/SCAD" + '/' + args.drug + "/source_data/source_scaled" + args.gene + ".csv",
+        x_source = pd.read_csv("../../Datasets/processedData" + '/' + args.drug + "/source_data/source_scaled" + args.gene + ".csv",
                                index_col=0)
-        y_source = pd.read_csv("../../data/SCAD" + '/' + args.drug + "/source_data/source_meta_data.csv",
+        y_source = pd.read_csv("../../Datasets/processedData" + '/' + args.drug + "/source_data/source_meta_data.csv",
                                index_col=0)
         # train
         x_source = x_source.T
@@ -85,7 +85,7 @@ def main(args):
         x_val_source = x_val_source.T
 
         if args.sampling_method == "weight":
-            y_source = pd.read_csv("../../data/SCAD/" + args.drug + "/source_data/source_meta_data.csv", index_col=0)
+            y_source = pd.read_csv("../../Datasets/processedData/" + args.drug + "/source_data/source_meta_data.csv", index_col=0)
             from collections import Counter
             class_sample_count = np.array([Counter(y_source['response'])[0] / len(y_source['response']),
                                            Counter(y_source['response'])[1] / len(y_source['response'])])
@@ -117,10 +117,10 @@ def main(args):
 
         dataloader_source = {'train': source_train, 'val': source_valid}
         X = pd.read_csv(
-            "../../data/SCAD" + '/' + args.drug + '/target_data/target_scaled' + args.gene + ".csv",
+            "../../Datasets/processedData" + '/' + args.drug + '/target_data/target_scaled' + args.gene + ".csv",
             index_col=0)
         Y = pd.read_csv(
-            "../../data/SCAD" + '/' + args.drug + "/target_data/target_meta_data.csv",
+            "../../Datasets/processedData" + '/' + args.drug + "/target_data/target_meta_data.csv",
             index_col=0)
         test_dataset = utils.create_dataset(x=X, y=Y, batch_size=batch_size, shuffle=False)
         count = X.T
@@ -209,7 +209,7 @@ def main(args):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     # data
-    parser.add_argument('--path', type=str, default='data/SCAD',
+    parser.add_argument('--path', type=str, default='Datasets/processedData',
                         help='Path of the dataset used for model training')
     parser.add_argument('--drug', type=str, default='Vorinostat',
                         help='choose drug,Can be PLX4720_451Lu,Gefitinib,Erlotinib,PLX4720,Vorinostat, Cetuximab,AR-42,and Etoposide.')

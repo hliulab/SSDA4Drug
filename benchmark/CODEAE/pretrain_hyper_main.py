@@ -69,7 +69,7 @@ def main(args, update_params_dict):
 
     training_params['unlabeled'].update(update_params_dict)
     param_str = dict_to_str(update_params_dict)
-    x_source = pd.read_csv("../../data/SCAD" + '/' + args.drug + "/source_data/source_scaled" + args.gene + ".csv",
+    x_source = pd.read_csv("../../Datasets/processedData" + '/' + args.drug + "/source_data/source_scaled" + args.gene + ".csv",
                            index_col=0)
     if not args.norm_flag:
         method_save_folder = os.path.join('model_save', f'{args.drug}', f'{args.method}')

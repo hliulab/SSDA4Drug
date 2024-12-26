@@ -53,16 +53,16 @@ def main(args):
     # data loading
     ####################################################################################################################
     # Loading Source Data
-    x_source = pd.read_csv("./experimentData/" + args.cell + "/" + "source_data" + "/source_scaled" + args.gene + ".csv",
+    x_source = pd.read_csv("./Extended/" + args.cell + "/" + "source_data" + "/source_scaled" + args.gene + ".csv",
                            index_col=0)
     # train
-    x_train_source = pd.read_csv("./experimentData/" + args.cell + "/" + "source_data" + '/' + gene + "/X_train_source.csv",
+    x_train_source = pd.read_csv("./Extended/" + args.cell + "/" + "source_data" + '/' + gene + "/X_train_source.csv",
                                  index_col=0)
-    y_train_source = pd.read_csv("./experimentData/" + args.cell + "/" + "/source_data" + '/' + gene + "/Y_train_source.csv",
+    y_train_source = pd.read_csv("./Extended/" + args.cell + "/" + "/source_data" + '/' + gene + "/Y_train_source.csv",
                                  index_col=0)
 
     if args.sampling_method == "weight":
-        y_source = pd.read_csv("./experimentData/" + args.cell + "/" + "/source_data/source_meta_data.csv", index_col=0)
+        y_source = pd.read_csv("./Extended/" + args.cell + "/" + "/source_data/source_meta_data.csv", index_col=0)
         from collections import Counter
         class_sample_count = np.array([Counter(y_source['response'])[0] / len(y_source['response']),
                                        Counter(y_source['response'])[1] / len(y_source['response'])])
@@ -91,9 +91,9 @@ def main(args):
                                         sampler=sampler)
 
     # valid
-    x_val_source = pd.read_csv("./experimentData/" + args.cell + "/" + "/source_data" + '/' + gene + "/X_val_source.csv",
+    x_val_source = pd.read_csv("./Extended/" + args.cell + "/" + "/source_data" + '/' + gene + "/X_val_source.csv",
                                index_col=0)
-    y_val_source = pd.read_csv("./experimentData/" + args.cell + "/" + "/source_data" + '/' + gene + "/Y_val_source.csv",
+    y_val_source = pd.read_csv("./Extended/" + args.cell + "/" + "/source_data" + '/' + gene + "/Y_val_source.csv",
                                index_col=0)
     source_valid = utils.create_dataset(x=x_val_source, y=y_val_source, batch_size=batch_size, shuffle=False)
 
@@ -102,19 +102,19 @@ def main(args):
     # Loading Unlabeled Target Data
     # train
     x_train_target = pd.read_csv(
-        "./experimentData/" + args.cell + '/' + args.shot_method + '/' + gene + "/unlabeled_target_data" + '/' + "/X_train_target.csv",
+        "./Extended/" + args.cell + '/' + args.shot_method + '/' + gene + "/unlabeled_target_data" + '/' + "/X_train_target.csv",
         index_col=0)
     y_train_target = pd.read_csv(
-        "./experimentData/" + args.cell + '/' + args.shot_method + '/' + gene + "/unlabeled_target_data" + '/' + "/Y_train_target.csv",
+        "./Extended/" + args.cell + '/' + args.shot_method + '/' + gene + "/unlabeled_target_data" + '/' + "/Y_train_target.csv",
         index_col=0)
     target_train = utils.create_dataset(x=x_train_target, y=y_train_target, batch_size=batch_size, shuffle=True)
 
     # valid
     x_val_target = pd.read_csv(
-        "./experimentData/" + args.cell + '/' + args.shot_method + '/' + gene + "/unlabeled_target_data" + '/' + "/X_val_target.csv",
+        "./Extended/" + args.cell + '/' + args.shot_method + '/' + gene + "/unlabeled_target_data" + '/' + "/X_val_target.csv",
         index_col=0)
     y_val_target = pd.read_csv(
-        "./experimentData/" + args.cell + '/' + args.shot_method + '/' + gene + "/unlabeled_target_data" + '/' + "/Y_val_target.csv",
+        "./Extended/" + args.cell + '/' + args.shot_method + '/' + gene + "/unlabeled_target_data" + '/' + "/Y_val_target.csv",
         index_col=0)
     target_valid = utils.create_dataset(x=x_val_target, y=y_val_target, batch_size=batch_size, shuffle=False)
 
@@ -123,27 +123,27 @@ def main(args):
     # Loading labeled Target Data
     # train
     x_train_target = pd.read_csv(
-        "./experimentData/" + args.cell + '/' + args.shot_method + '/' + gene + "/labled_target_data" + '/' + "/X_train_target.csv",
+        "./Extended/" + args.cell + '/' + args.shot_method + '/' + gene + "/labled_target_data" + '/' + "/X_train_target.csv",
         index_col=0)
     y_train_target = pd.read_csv(
-        "./experimentData/" + args.cell + '/' + args.shot_method + '/' + gene + "/labled_target_data" + '/' + "/Y_train_target.csv",
+        "./Extended/" + args.cell + '/' + args.shot_method + '/' + gene + "/labled_target_data" + '/' + "/Y_train_target.csv",
         index_col=0)
     target_train = utils.create_dataset(x=x_train_target, y=y_train_target, batch_size=batch_size, shuffle=True)
 
     # valid
     x_val_target = pd.read_csv(
-        "./experimentData/" + args.cell + '/' + args.shot_method + '/' + gene + "/labled_target_data" + '/' + "/X_val_target.csv",
+        "./Extended/" + args.cell + '/' + args.shot_method + '/' + gene + "/labled_target_data" + '/' + "/X_val_target.csv",
         index_col=0)
     y_val_target = pd.read_csv(
-        "./experimentData/" + args.cell + '/' + args.shot_method + '/' + gene + "/labled_target_data" + '/' + "/Y_val_target.csv",
+        "./Extended/" + args.cell + '/' + args.shot_method + '/' + gene + "/labled_target_data" + '/' + "/Y_val_target.csv",
         index_col=0)
     target_valid = utils.create_dataset(x=x_val_target, y=y_val_target, batch_size=batch_size, shuffle=False)
 
     dataloader_labeled_target = {'train': target_train, 'val': target_valid}
 
     # test
-    X = pd.read_csv("./experimentData/" + args.cell + '/' + "target_data/target_scaled.csv", index_col=0)
-    Y = pd.read_csv("./experimentData/" + args.cell + '/' + "/target_data/target_meta_data.csv", index_col=0)
+    X = pd.read_csv("./Extended/" + args.cell + '/' + "target_data/target_scaled.csv", index_col=0)
+    Y = pd.read_csv("./Extended/" + args.cell + '/' + "/target_data/target_meta_data.csv", index_col=0)
     test_data = utils.create_dataset(x=X, y=Y, batch_size=batch_size, shuffle=False)
 
     ####################################################################################################################
@@ -220,7 +220,7 @@ def main(args):
     loss_class = nn.CrossEntropyLoss()
     print("Transfer " + args.method + " finished")
     test_model = m.Test_Double_Model(predictor=predictor_f, encoder=encoder_f, adentropy_p=Predictor_adentropy_f)
-    test_predicted_t48_file = "./experimentData/" + args.cell + '/' + args.cell + ".tsv"
+    test_predicted_t48_file = "./Extended/" + args.cell + '/' + args.cell + ".tsv"
     trainer.test_experiment(test_model, test_data, loss_class, device, test_predicted_t48_file, Y)
 
 
@@ -236,9 +236,9 @@ if __name__ == '__main__':
     parser.add_argument('--shot_method', type=str, default="3-shot",
                         help='choose shot type. Can be n-shot. Default: 3-shot')
     # save
-    parser.add_argument('--result', type=str, default='experimentData/',
+    parser.add_argument('--result', type=str, default='Extended/',
                         help='Path of the training result report files')
-    parser.add_argument('--sc_all', type=str, default='experimentData/',
+    parser.add_argument('--sc_all', type=str, default='Extended/',
                         help='Path of the model in the sc level')
 
     # train

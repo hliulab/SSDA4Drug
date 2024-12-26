@@ -106,10 +106,10 @@ def run_main(args):
         target_model_path = args.sc_model_path + para
 
         ## target data
-        x_target = pd.read_csv("../../data/SCAD" + '/' + args.drug + "/target_data/target_scaled" + args.gene + ".csv",
+        x_target = pd.read_csv("../../Datasets/processedData" + '/' + args.drug + "/target_data/target_scaled" + args.gene + ".csv",
                                    index_col=0)
 
-        y_target = pd.read_csv("../../data/SCAD" + '/' + args.drug + "/target_data/target_meta_data.csv",
+        y_target = pd.read_csv("../../Datasets/processedData" + '/' + args.drug + "/target_data/target_meta_data.csv",
                                index_col=0)
 
         ## Add adata
@@ -117,9 +117,9 @@ def run_main(args):
         adata = sc.AnnData(count)
         adata.obs['response'] = y_target["response"]
         ## source data
-        x_source = pd.read_csv("../../data/SCAD" + '/' + args.drug + "/source_data/source_scaled" + args.gene + ".csv",
+        x_source = pd.read_csv("../../Datasets/processedData" + '/' + args.drug + "/source_data/source_scaled" + args.gene + ".csv",
                                index_col=0)
-        y_source = pd.read_csv("../../data/SCAD/" + args.drug + "/source_data/source_meta_data.csv", index_col=0)
+        y_source = pd.read_csv("../../Datasets/processedData/" + args.drug + "/source_data/source_meta_data.csv", index_col=0)
 
         # Split data to train and valid set
         x_target = x_target.T
