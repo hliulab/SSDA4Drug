@@ -110,3 +110,6 @@ python experiment.py --cell <cell_name>
   - `PCa`: The directory stores the processed  dataset of PCa cell lines.
 + `baselineData`:
   * `rawData`: The directory stores the raw dataset of experiment.
+  * `benchmark.ipynb`: Separating expression profiles and labels from the raw benchmark dataset.
+  * `split_data.ipynb`: Split the dataset.
+  * `n-shot.ipynb`: Extract labeled samples from each class in the target domain.
