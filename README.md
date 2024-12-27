@@ -55,7 +55,7 @@ Once the benchmark dataset has been processed, you can run SSDA4Drug using the c
 python experiment_shot.py --shot_method "3-shot" --drug "Gefitinib" --encoder_h_dims "512,256" --bottleneck 128 --predictor_h_dims "64,32" --epochs 50 --lr 0.001 --batch_size 32 --dropout 0.3
 ```
 
-if you want to train the model using custom datasets, you need to download the datasets (Example: GDSC and GEO), place it in the datasets folder, and then run
+If you want to train the model using custom datasets, you need to download the datasets (Example: GDSC and GEO), place it in the datasets folder, and then run
 ```bash
 python experiment_shot.py --shot_method "3-shot"
 ```
@@ -63,8 +63,8 @@ python experiment_shot.py --shot_method "3-shot"
 Running other competing methods:
 
 - `baseline`: 
-  - `1. cd benchmark/baseline/`
-  - `2. python baseline.py --drug "Gefitinib"`
+  - `cd benchmark/baseline/`
+  - `python baseline.py --drug "Gefitinib"`
 
 - `CODE-AE`:
   - `cd benchmark/CODEAE/`
