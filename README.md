@@ -60,29 +60,29 @@ if you want to train the model using custom datasets, you need to download the d
 python experiment_shot.py --shot_method "3-shot"
 ```
 
-Usage of other competing models
+Running other competing methods:
 
 - `baseline`: 
   - `1. cd benchmark/baseline/`
   - `2. python baseline.py --drug "Gefitinib"`
 
 - `CODE-AE`:
-  - `1. cd benchmark/CODEAE/`
-  - `2. python pretrain_hyper_main.py --drug "Gefitinib"`
-  - `3. python drug_ft_hyper_main.py --drug "Gefitinib"`
+  - `cd benchmark/CODEAE/`
+  - `python pretrain_hyper_main.py --drug "Gefitinib"`
+  - `python drug_ft_hyper_main.py --drug "Gefitinib"`
 
 - `SCAD`:
-  - `1. cd benchmark/SCAD`
-  - `2. python main.py --drug "Gefitinib"`
+  - `cd benchmark/SCAD`
+  - `python main.py --drug "Gefitinib"`
 
 - `scDeal`:
-  - `1. cd benchmark/scDeal/`
-  - `2. python bulkmodel.py --drug "Gefitinib"`
-  - `3. python scmodel.py`
+  - `cd benchmark/scDeal/`
+  - `python bulkmodel.py --drug "Gefitinib"`
+  - `python scmodel.py`
 
 - `scDeal_noPre`:
-  - `1. cd benchmark/scDeal/`
-  - `2. python scmodel_noPre.py --drug "Gefitinib"`
+  - `cd benchmark/scDeal/`
+  - `python scmodel_noPre.py --drug "Gefitinib"`
 
 Running extended experiments with SSDA4Drug
 
